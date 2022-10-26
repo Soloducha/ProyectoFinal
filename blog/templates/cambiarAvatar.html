@@ -1,0 +1,13 @@
+{% extends "index.html" %}
+{% block contenido_pagina %}
+{% load static %}
+Editar perfil de: <i>{{ user }}</i>
+
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <br><br>
+    <button type="submit" name="submit">Guardar avatar</button>
+</form>
+
+{% endblock %}

@@ -45,18 +45,31 @@
 
       <h1 class="logo me-auto me-lg-0"><a href="index.html">Coder House<span>.</span></a></h1>
       
-      <nav id="navbar" class="navbar order-last order-lg-0">
+      <nav id="navbar" class="navbar order-last order-lg-2">
         <ul>
           <li><a class="nav-link scrollto active" href="/inicio/">Home</a></li>
           <li><a class="nav-link scrollto" href="/about/">About</a></li>
           <li><a class="nav-link scrollto" href="#se534ces">Blog</a></li>
           <li><a class="nav-link scrollto " href="/mensajes/">Mensajeria</a></li>
         </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
+        <ul>
+          {% if not request.user.is_authenticated %}
+            <li><a class="get-started-btn scrollto" href="{% url 'Login' %}">Login</a></li>
+            <li><a class="get-started-btn scrollto" href="{% url 'Register' %}">Registrarse</a></li>
+          {% endif %}
 
-      <a href="#" class="get-started-btn scrollto">Login</a>
-      <a href="#" class="get-started-btn scrollto">Logout</a>
+          {% if request.user.is_authenticated %}
+            {% if avatar %}
+              <li><img height="40px" src="{{ avatar }}"/></li>
+            {% endif %}
+              <li><p class="nav-link scrollto"> {{ user.username }} !</p></li>
+              <li><a class="get-started-btn scrollto" href="{% url 'Logout' %}">Logout</a></li>
+              <li><a class="get-started-btn scrollto" href="{% url 'EditarPerfil' %}">Editar Perfil</a></li>
+              <li><a class="get-started-btn scrollto" href="{% url 'AgregarAvatar' %}">Agregar Avatar</a></li>
+          {% endif %}
+      </nav><!-- .navbar -->
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
 
     </div>
   </header><!-- End Header -->

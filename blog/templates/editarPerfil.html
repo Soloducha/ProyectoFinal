@@ -1,0 +1,15 @@
+{% extends "index.html" %}
+{% block contenido_pagina %}
+{% load static %}
+Editar perfil de: <i>{{ user }}</i>
+{% if avatar %}
+    <img height="40px" src="{{ avatar }}"/>
+{% endif %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <br><br>
+    <button type="submit" name="submit">Editar perfil</button>
+</form>
+{% endblock %}
