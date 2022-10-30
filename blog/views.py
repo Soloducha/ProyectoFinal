@@ -19,6 +19,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from blog.models import Avatar
 from blog.forms import AvatarForm, UserEditionForm
 
+@login_required
 def inicio(request):
     avatar = Avatar.objects.filter(user=request.user).first()
     if avatar is not None:
@@ -28,9 +29,14 @@ def inicio(request):
 
     return render(request, "inicio.html", contexto)
 
-
+@login_required
 def about(request):
-    return render(request, "about.html")
+    avatar = Avatar.objects.filter(user=request.user).first()
+    if avatar is not None:
+        contexto = {"avatar": avatar.imagen.url}
+    else:
+        contexto = {}
+    return render(request, "about.html", contexto)
 
 
 def blogs(request):

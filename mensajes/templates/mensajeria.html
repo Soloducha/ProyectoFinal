@@ -1,5 +1,77 @@
 {% extends "index.html" %}
 {% block contenido_pagina %}
-PROGRAMA DE MENSAJERIA >D
+<br>
+<!DOCTYPE html>
+<html>
+<head>
+{% load static %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="{% static 'css/mensajeria.css' %}" rel="stylesheet">
+</head>
+<body>
 
+
+
+<h2>Mensajeria</h2>
+<div class="bodymsg">
+{% for mensaje in mensajes %}
+
+    {% if mensaje.alineamiento == "I" %}
+        <div class="containermsg">
+          <img src="{{mensaje.avatar.imagen.url}}" alt="Avatar">
+          <p>{{mensaje.mensaje}}</p>
+          <span class="time-rightmsg">{{mensaje.emisor}}</span>
+        </div>        
+    {% else %}
+        <div class="containermsg darker">
+          <img src="{{mensaje.avatar.imagen.url}}" alt="Avatar" class="right" >
+          <p>{{mensaje.mensaje}}</p>
+          <span class="time-leftmsg">{{mensaje.emisor}}</span>
+        </div>       
+    {% endif %}
+{% endfor %}
+
+
+<!-- <div class="containermsg">
+  <img src="https://www.w3schools.com/w3images/bandmember.jpg" alt="Avatar">
+  <p>Hola Mundo</p>
+  <span class="time-rightmsg">11:00</span>
+</div>
+
+<div class="containermsg darker" >
+  <img src="https://www.w3schools.com/w3images/avatar_g2.jpg" alt="Avatar" class="right" >
+  <p>Hola Humano!</p>
+  <span class="time-leftmsg">11:01</span>
+</div>
+
+<div class="containermsg">
+  <img src="https://www.w3schools.com/w3images/bandmember.jpg" alt="Avatar" >
+  <p>mmm como te puedo contaminar?</p>
+  <span class="time-rightmsg">11:02</span>
+</div>
+
+<div class="containermsg darker">
+  <img src="https://www.w3schools.com/w3images/avatar_g2.jpg" alt="Avatar" class="right">
+  <p>mmm no se, proba prendiendote fuego?</p>
+  <span class="time-leftmsg">11:05</span>
+</div> -->
+
+<div class="containermsg darker">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <p>
+            <label for="id_mensaje">Escriba su mensaje:</label>
+            <input type="text" name="mensaje" required="" id="id_mensaje">
+        </p>
+        <button type="submit" name="submit">Mensajear</button>
+    </form>
+</div>
+
+
+</div>
+</body>
+</html>
+
+
+<br>
 {% endblock %}

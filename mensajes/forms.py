@@ -9,9 +9,8 @@ from mensajes.models import Mensaje
 class MensajeForm(forms.ModelForm):
 
     emisor = forms.CharField(label="emisor del mensaje")
-    avatar = forms.ImageField()
     mensaje = forms.CharField(label="escriba su mensaje")
 
     class Meta:
         model = Mensaje
-        fields = ["emisor", "avatar", "mensaje"]  
+        fields = ["emisor", "mensaje"]  
