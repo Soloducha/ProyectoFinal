@@ -35,6 +35,8 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+
+  
 </head>
 
 <body>
@@ -44,7 +46,7 @@
     <div class="container d-flex align-items-center justify-content-lg-between">
 
       <h1 class="logo me-auto me-lg-0"><a href="index.html">Coder House<span>.</span></a></h1>
-      
+
       <nav id="navbar" class="navbar order-last order-lg-2">
         <ul>
           <li><a class="nav-link scrollto active" href="/inicio/">Home</a></li>
@@ -52,21 +54,30 @@
           <li><a class="nav-link scrollto" href="#se534ces">Blog</a></li>
           <li><a class="nav-link scrollto " href="/mensajes/">Mensajeria</a></li>
         </ul>
+
         <ul>
           {% if not request.user.is_authenticated %}
             <li><a class="get-started-btn scrollto" href="{% url 'Login' %}">Login</a></li>
             <li><a class="get-started-btn scrollto" href="{% url 'Register' %}">Registrarse</a></li>
           {% endif %}
-
+          
+          <div class="dropdown">
           {% if request.user.is_authenticated %}
             {% if avatar %}
+            <div class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
               <li><img height="40px" src="{{ avatar }}"/></li>
             {% endif %}
-              <li><p class="nav-link scrollto"> {{ user.username }} !</p></li>
-              <li><a class="get-started-btn scrollto" href="{% url 'Logout' %}">Logout</a></li>
-              <li><a class="get-started-btn scrollto" href="{% url 'EditarPerfil' %}">Editar Perfil</a></li>
-              <li><a class="get-started-btn scrollto" href="{% url 'AgregarAvatar' %}">Agregar Avatar</a></li>
+              <li class="blanco scrollto "> {{ user.username }} </li>
+            </div>
+             
+            <ul class="dropdown-menu">
+              <li><a class="scrollto dropdown-item" href="{% url 'Logout' %}">Logout</a></li>
+              <li><a class="scrollto dropdown-item" href="{% url 'EditarPerfil' %}">Editar Perfil</a></li>
+              <li><a class="scrollto dropdown-item" href="{% url 'AgregarAvatar' %}">Agregar Avatar</a></li>
+            </ul>
+          </div>
           {% endif %}
+
       </nav><!-- .navbar -->
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -89,13 +100,13 @@
     </div>
   </section><!-- End Hero -->
 
-  <main id="main">
-
-    
+  <main  class="container"  id="main">
+    <br>
 
     {% block contenido_pagina %}
     {% endblock %}
 
+    <br>
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
@@ -117,15 +128,7 @@
             </div>
           </div>
 
-          <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="/inicio/">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="/about/">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Blog</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="/mensajes/">Mensajeria</a></li>
-            </ul>
-          </div>
+          
         </div>
       </div>
     </div>

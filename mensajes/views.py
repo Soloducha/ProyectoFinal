@@ -5,7 +5,7 @@ from blog.models import Avatar
 from django.contrib.auth import authenticate
 from mensajes.models import Mensaje
 from django.db import models
-
+from django.contrib.auth.models import User
 class Chat(models.Model):
     emisor = models.IntegerField()
     mensaje = models.CharField(max_length=200)
@@ -18,9 +18,11 @@ def mensajeria(request):
         mensajes_guardados=Mensaje.objects.filter()
         chats=[]
         i=0
+        
         for item in mensajes_guardados:
-            emisor=item.emisor_id,
-            mensaje = item.mensaje,
+            emisor=item.emisor_id
+            nombre_emisor=User.objects.filter(id=emisor).first()
+            mensaje = item.mensaje
             avatar = Avatar.objects.filter(user=emisor).first()
             if i %2 == 0:
                 alineamiento = "I"
@@ -28,7 +30,7 @@ def mensajeria(request):
                 alineamiento = "R"
             i=i+1
          
-            chat=Chat(emisor=emisor[0],mensaje=mensaje[0],avatar=avatar, alineamiento=alineamiento)
+            chat=Chat(emisor=nombre_emisor,mensaje=mensaje,avatar=avatar, alineamiento=alineamiento)
             chats.append(chat)
 
         
@@ -53,14 +55,18 @@ def mensajeria(request):
                 emisor=emisor,
                 mensaje=mensaje_recibido
             )
+
+           
+
             nuevo_mensaje.save()
             
             mensajes_guardados=Mensaje.objects.filter()
             chats=[]
             i=0
             for item in mensajes_guardados:
-                emisor=item.emisor_id,
-                mensaje = item.mensaje,
+                emisor=item.emisor_id
+                nombre_emisor=User.objects.filter(id=emisor).first()
+                mensaje = item.mensaje
                 avatar = Avatar.objects.filter(user=emisor).first()
                 if i %2 == 0:
                     alineamiento = "I"
@@ -68,7 +74,7 @@ def mensajeria(request):
                     alineamiento = "R"
                 i=i+1
             
-                chat=Chat(emisor=emisor[0],mensaje=mensaje[0],avatar=avatar, alineamiento=alineamiento)
+                chat=Chat(emisor=nombre_emisor,mensaje=mensaje,avatar=avatar, alineamiento=alineamiento)
                 chats.append(chat)
 
             avatar = Avatar.objects.filter(user=request.user).first()
@@ -83,8 +89,9 @@ def mensajeria(request):
             chats=[]
             i=0
             for item in mensajes_guardados:
-                emisor=item.emisor_id,
-                mensaje = item.mensaje,
+                emisor=item.emisor_id
+                nombre_emisor=User.objects.filter(id=emisor).first()
+                mensaje = item.mensaje
                 avatar = Avatar.objects.filter(user=emisor).first()
                 if i %2 == 0:
                     alineamiento = "I"
@@ -92,7 +99,7 @@ def mensajeria(request):
                     alineamiento = "R"
                 i=i+1
             
-                chat=Chat(emisor=emisor[0],mensaje=mensaje[0],avatar=avatar, alineamiento=alineamiento)
+                chat=Chat(emisor=nombre_emisor,mensaje=mensaje,avatar=avatar, alineamiento=alineamiento)
                 chats.append(chat)
 
             avatar = Avatar.objects.filter(user=request.user).first()
