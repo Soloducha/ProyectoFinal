@@ -6,11 +6,13 @@
 <p style="color: red;"> Error: alguno de los datos ingresados es incorrecto, revisar</p>
 {% endif %}
 
+<h2>Crear un nuevo Autor</h2><br>
 
 <form action="" method="POST">{% csrf_token %}
     <table>
     {{ formulario.as_table }}
     </table>
+    <br>
     <input type="submit" value="Guardar Autor">
 </form>
 

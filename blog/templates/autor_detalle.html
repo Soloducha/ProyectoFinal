@@ -2,9 +2,10 @@
 {% block contenido_pagina %}
 {% load static %}
 
-Nombre del autor: {{ autor.nombre }} <br>
-Apellido del autor: {{ autor.apellido }} <br>
-
+<h2>Detalle del autor</h2><br>
+<b>Nombre:</b> {{ autor.nombre }} <br>
+<b>Apellido:</b> {{ autor.apellido }} <br>
+<br>
 <a href="{% url 'AutorList' %}">Todos los autores</a>
-
+<br>
 {% endblock %} 

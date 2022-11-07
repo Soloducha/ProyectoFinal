@@ -226,7 +226,23 @@ def buscar_articulo(request):
 
 @login_required
 def buscar_pagina(request):
-    pass
+    avatar = Avatar.objects.filter(user=request.user).first()
+
+    if request.method == "GET":
+        if avatar is not None:
+            contexto = {"avatar": avatar.imagen.url}
+        else:
+            contexto = {}
+        return render(request, "busqueda-pagina.html", contexto)
+
+    if request.method == "POST":
+        pagina_a_buscar = request.POST["nombre"]
+        resultados_de_busqueda = Pagina.objects.filter(titulo=pagina_a_buscar)
+        if avatar is not None:
+            contexto = {"avatar": avatar.imagen.url, "resultados": resultados_de_busqueda}
+        else:
+            contexto = {"resultados": resultados_de_busqueda}
+        return render(request, "resultado-de-busqueda.html", contexto)
 
 def procesar_seccion(request):
     if request.method == "GET":

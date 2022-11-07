@@ -1,7 +1,8 @@
 {% extends "index.html" %}articulo
 {% block contenido_pagina %}
 {% load static %}
-<h1>Lista completa paginas</h1>
+<h2>Lista completa de paginas</h2>
+<br>
 
 {% if object_list %}
 
@@ -9,7 +10,7 @@
     {% for pagina in object_list %}
 
     <li>
-        <p> {{ pagina.titulo }} de {{ pagina.autor }}</p>
+        <p> <b> {{ pagina.titulo }} </b> de <b> {{ pagina.autor }} </b></p>
 
     <p> 
         <a href="{% url 'PaginaDetail' pagina.id %}">Ver</a>

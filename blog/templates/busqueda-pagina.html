@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+{% block contenido_pagina %}
+{% load static %}
+
+<h2>Busqueda por nombre de Pagina</h2>
+<form action="/buscar-pagina/" method="POST">{% csrf_token %}
+    <p><input type="text" name="nombre" id="nombre"></p>
+    <input type="submit" value="Buscar">
+</form>
+
+{% endblock %}
