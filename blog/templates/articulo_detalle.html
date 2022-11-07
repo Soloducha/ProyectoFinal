@@ -1,0 +1,12 @@
+{% extends "index.html" %}
+{% block contenido_pagina %}
+{% load static %}
+
+Titulo del articulo: {{ articulo.titulo }} <br>
+Resumen del articulo: {{ articulo.resumen }} <br>
+Texto del articulo: {{ articulo.texto }} <br>
+Fecha del articulo: {{ articulo.fecha }} <br>
+
+<a href="{% url 'ArticuloList' %}">Todos los articulos</a>
+
+{% endblock %} 

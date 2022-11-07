@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+{% block contenido_pagina %}
+{% load static %}
+
+<h2>Busqueda por título de articulos.</h2>
+<form action="/blog/buscar-articulo/" method="POST">{% csrf_token %}
+    <p><input type="text" name="titulo" id="titulo"></p>
+    <input type="submit" value="Buscar">
+</form>
+
+{% endblock %}

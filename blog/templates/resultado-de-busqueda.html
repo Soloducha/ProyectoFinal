@@ -1,0 +1,17 @@
+{% extends "index.html" %}
+{% block contenido_pagina %}
+{% load static %}
+
+<h3>Resultado de la busqueda:</h1> <br>
+    <ul>
+    {% for resultado in resultados %}
+    
+        <li>{{resultado.titulo}} {{resultado.texto}} {{resultado.fecha}}
+            {{resultado.apellido}}, {{resultado.nombre}}
+            {{resultado.nombre_seccion}}
+        </li>
+    
+    {% endfor %}
+    </ul>
+
+{% endblock %}

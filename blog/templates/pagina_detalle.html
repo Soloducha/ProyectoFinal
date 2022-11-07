@@ -1,0 +1,13 @@
+{% extends "index.html" %}
+{% block contenido_pagina %}
+{% load static %}
+
+<b>Titulo de la pagina:</b> {{ pagina.titulo }} <br>
+<b>Autor de la pagina:</b> {{ pagina.autor }} <br>
+<b>Resumen de la pagina:</b> {{ pagina.resumen }} <br>
+<b>Texto de la pagina:</b> {{ pagina.texto }} <br>
+<b>Fecha de la pagina:</b> {{ pagina.fecha }} <br>
+
+<a href="{% url 'PaginaList' %}">Todas las paginas</a>
+
+{% endblock %} 

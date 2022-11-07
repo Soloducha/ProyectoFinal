@@ -1,0 +1,10 @@
+{% extends "index.html" %}
+{% block contenido_pagina %}
+{% load static %}
+
+Nombre del autor: {{ autor.nombre }} <br>
+Apellido del autor: {{ autor.apellido }} <br>
+
+<a href="{% url 'AutorList' %}">Todos los autores</a>
+
+{% endblock %} 

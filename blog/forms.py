@@ -24,3 +24,29 @@ class AvatarForm(forms.ModelForm):
     class Meta:
         model = Avatar
         fields = ["imagen", "user"]
+
+
+class ArticuloForm(forms.Form):
+
+    titulo = forms.CharField(max_length=30)
+    resumen = forms.CharField(max_length=30)
+    texto = forms.CharField(max_length=1000)
+    fecha = forms.DateField()
+
+
+class PaginaForm(forms.Form):
+
+    titulo = forms.CharField(max_length=30)
+    resumen = forms.CharField(max_length=30)
+    texto = forms.CharField(max_length=1000)
+    fecha = forms.DateField()
+
+
+class AutorForm(forms.Form):
+
+    nombre = forms.CharField(max_length=30)
+    apellido = forms.CharField(max_length=30)
+
+
+class SeccionForm(forms.Form):
+    nombre_seccion = forms.CharField(max_length=30)

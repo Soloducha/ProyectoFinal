@@ -36,7 +36,6 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 
-  
 </head>
 
 <body>
@@ -45,14 +44,48 @@
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center justify-content-lg-between">
 
-      <h1 class="logo me-auto me-lg-0"><a href="index.html">Coder House<span>.</span></a></h1>
+      <h1 class="logo me-auto me-lg-0"><a href="/inicio/">Coder House<span>.</span></a></h1>
 
       <nav id="navbar" class="navbar order-last order-lg-2">
         <ul>
-          <li><a class="nav-link scrollto active" href="/inicio/">Home</a></li>
-          <li><a class="nav-link scrollto" href="/about/">About</a></li>
-          <li><a class="nav-link scrollto" href="#se534ces">Blog</a></li>
+          <div class="dropdown">
+            <a class="nav-link blanco scrollto "> Autores </a>
+            <ul class="dropdown-menu">
+              <li><a class="nav-link scrollto dropdown-item" href="{% url 'AutorList' %}">Listar Autores</a></li>
+              <li><a class="nav-link scrollto dropdown-item" href="{% url 'AutorNew' %}">Crear Autor</a></li>
+              <li><a class="nav-link scrollto dropdown-item" href="{% url 'AutorSearch' %}">Buscar Autor</a></li>
+            </ul>
+          </div>
+          
+          <div class="dropdown">
+            <a class="blanco nav-link scrollto "> Articulos </a>
+            <ul class="dropdown-menu">
+              <li><a class="nav-link scrollto dropdown-item" href="{% url 'ArticuloList' %}">Listar Articulos</a></li>
+              <li><a class="nav-link scrollto dropdown-item" href="{% url 'ArticuloNew' %}">Crear Articulo</a></li>
+              <li><a class="nav-link scrollto dropdown-item" href="{% url 'ArticuloSearch' %}">Buscar Articulo</a></li>
+            </ul>
+          </div>
+
+          <div class="dropdown">
+            <a class="blanco nav-link scrollto "> Paginas </a>
+            <ul class="dropdown-menu">
+              <li><a class="nav-link scrollto dropdown-item" href="{% url 'PaginaList' %}">Listar Paginas</a></li>
+              <li><a class="nav-link scrollto dropdown-item" href="{% url 'PaginaNew' %}">Crear Pagina</a></li>
+              <li><a class="nav-link scrollto dropdown-item" href="{% url 'PaginaSearch' %}">Buscar Pagina</a></li>
+            </ul>
+          </div>
+
+          <div class="dropdown">
+            <a class="blanco nav-link scrollto "> Seccion </a>
+            <ul class="dropdown-menu">
+              <li><a class="nav-link scrollto dropdown-item" href="{% url 'SeccionList' %}">Listar Secciones</a></li>
+              <li><a class="nav-link scrollto dropdown-item" href="{% url 'SeccionNew' %}">Crear Seccion</a></li>
+              <li><a class="nav-link scrollto dropdown-item" href="{% url 'SeccionSearch' %}">Buscar Seccion</a></li>
+            </ul>
+          </div>
+
           <li><a class="nav-link scrollto " href="/mensajes/">Mensajeria</a></li>
+          <li><a class="nav-link scrollto" href="/about/">About</a></li>
         </ul>
 
         <ul>
@@ -66,6 +99,9 @@
             {% if avatar %}
             <div class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
               <li><img height="40px" src="{{ avatar }}"/></li>
+            {% else %}
+            <div class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              <li><img height="40px" src="{{ '/media/avatares/default.png' }}"/></li>
             {% endif %}
               <li class="blanco scrollto "> {{ user.username }} </li>
             </div>
