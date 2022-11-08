@@ -1,11 +1,13 @@
 {% extends "index.html" %}
 {% block contenido_pagina %}
 {% load static %}
+
 <h2>Crear nuevo Articulo</h2><br>
+
 <form  action="" method="POST">{% csrf_token %}
     
     {{ form.as_p }}
-    
+
     <input type="submit" value="Enviar">
 <br>
 </form>

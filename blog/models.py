@@ -37,7 +37,7 @@ class Pagina(models.Model):
 
     def __str__(self):
         return self.titulo
-
+ 
 
 class Seccion(models.Model):
     class Meta: 
@@ -50,9 +50,8 @@ class Seccion(models.Model):
 
 
 class Imagenes(models.Model):
-    class Meta: 
-        verbose_name_plural = "Imagenes"
-    articulo = models.ForeignKey(Articulo, on_delete=models.CASCADE)
+
+    pagina = models.ForeignKey(Pagina, on_delete=models.CASCADE)
     imagen = models.ImageField(upload_to="imagenes", null=True, blank=True)
 
 

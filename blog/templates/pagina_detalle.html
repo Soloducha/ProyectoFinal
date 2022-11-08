@@ -1,13 +1,21 @@
 {% extends "index.html" %}
 {% block contenido_pagina %}
 {% load static %}
+ 
+<h1> {{ pagina.titulo }} </h1> <br>
 
-<b>Titulo de la pagina:</b> {{ pagina.titulo }} <br>
-<b>Autor de la pagina:</b> {{ pagina.autor }} <br>
-<b>Resumen de la pagina:</b> {{ pagina.resumen }} <br>
-<b>Texto de la pagina:</b> {{ pagina.texto }} <br>
-<b>Fecha de la pagina:</b> {{ pagina.fecha }} <br>
+<h3> {{ pagina.resumen }} </h3> <br>
 
+<h6> {{ pagina.texto }} </h6> <br>
+
+{% if imagen %}
+<img height="200px" src="{{ imagen.imagen.url }}"/></li>
+{% endif %}
+<br>
+<b>Autor:</b> {{ pagina.autor }} <br>
+
+<b>Fecha de Publicacion:</b> {{ pagina.fecha }} <br>
+<br><br>
 <a href="{% url 'PaginaList' %}">Todas las paginas</a>
 
 {% endblock %} 

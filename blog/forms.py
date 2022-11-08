@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-from blog.models import Avatar
+from blog.models import Avatar, Imagenes
 
 class UserEditionForm(UserCreationForm):
     email = forms.EmailField(label="Modificar email")
@@ -24,6 +24,16 @@ class AvatarForm(forms.ModelForm):
     class Meta:
         model = Avatar
         fields = ["imagen", "user"]
+
+
+class ImagenForm(forms.ModelForm):
+
+    imagenes = forms.ImageField()
+
+    class Meta:
+        model = Imagenes
+        fields = ["imagen", "pagina"]
+
 
 
 class ArticuloForm(forms.Form):

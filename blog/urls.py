@@ -9,30 +9,20 @@ from blog.views import (
     editar_perfil,
     agregar_avatar,
     procesar_autor,
-    procesar_articulo,
-    procesar_seccion,
    # procesar_pagina,
     buscar_pagina,
-    buscar_articulo,
     buscar_autor,
-    buscar_seccion,
     AutorList,
     AutorUpdateView,
    # AutorCreacion,
     AutorDelete,
     AutorDetalle,
-    ArticuloList,
-    ArticuloDetalle,
-    ArticuloDelete,
-    SeccionList,
-    SeccionDetalle,
-    SeccionDelete,
     PaginasList,
     PaginaDetalle,
     PaginaDelete,
-    ArticuloUpdateView,
     PaginaCreacion,
-    PaginaUpdateView
+    PaginaUpdateView,
+    agregar_imagen
 )
 from django.contrib.auth.views import LogoutView
 
@@ -51,13 +41,6 @@ urlpatterns = [
     path("editar-perfil/", editar_perfil, name="EditarPerfil"),
     path("agregar-avatar/", agregar_avatar, name="AgregarAvatar"),
 
-    path("formulario-articulo/", procesar_articulo, name="ArticuloNew"),
-    path("articulo/list/", ArticuloList.as_view(), name="ArticuloList"),
-    path("buscar-articulo/", buscar_articulo, name="ArticuloSearch"),
-    path("articulo/detalle/<pk>", ArticuloDetalle.as_view(), name="ArticuloDetail"),
-    path("articulo/borrar/<pk>", ArticuloDelete.as_view(), name="ArticuloDelete"),
-    path("articulo/editar/<pk>", ArticuloUpdateView.as_view(), name="ArticuloUpdate"),
-
     path("formulario-autor/", procesar_autor, name="AutorNew"),
     path("autor/list/", AutorList.as_view(), name="AutorList"),
     path("buscar-autor/", buscar_autor, name="AutorSearch"),
@@ -65,20 +48,15 @@ urlpatterns = [
     path("autor/borrar/<pk>", AutorDelete.as_view(), name="AutorDelete"),
     path("autor/editar/<pk>", AutorUpdateView.as_view(), name="AutorUpdate"),
 
-    path("formulario-seccion/", procesar_seccion, name="SeccionNew"),
-    path("buscar-seccion/", buscar_seccion, name="SeccionSearch"),
-    path("seccion/list/", SeccionList.as_view(), name="SeccionList"),
-    path("seccion/detalle/<pk>", SeccionDetalle.as_view(), name="SeccionDetail"),
-    path("seccion/borrar/<pk>", SeccionDelete.as_view(), name="SeccionDelete"),
-
     path("pagina-nuevo/", PaginaCreacion.as_view(), name="PaginaNew"),
     path("buscar-pagina/", buscar_pagina, name="PaginaSearch"),
     path("pagina/list/", PaginasList.as_view(), name="PaginaList"),
-    path("pagina/detalle/<pk>", PaginaDetalle.as_view(), name="PaginaDetail"),
+    path("pagina/detalle/<int:pk>", PaginaDetalle.as_view(), name="PaginaDetail"),
+    #path(r'^pagina/detalle/(?P<pk>\d+)', PaginaDetalle.as_view(), name="PaginaDetail"),
     path("pagina/borrar/<pk>", PaginaDelete.as_view(), name="PaginaDelete"),
     path("pagina/editar/<pk>", PaginaUpdateView.as_view(), name="PaginaUpdate"),
 
-
+    path("agregar-imagen/", agregar_imagen, name="AgregarImagen"),
 
 
 ]

@@ -2,16 +2,25 @@
 {% block contenido_pagina %}
 {% load static %}
 
+{% if resultados %}
+
 <h3>Resultado de la busqueda:</h1> <br>
     <ul>
     {% for resultado in resultados %}
     
-        <li>{{resultado.titulo}} {{resultado.texto}} {{resultado.fecha}}
+        <li><b>{{resultado.titulo}}</b><br>
+            {{resultado.texto}}<br><br>
+            <b>Fecha de Publicacion:</b> {{resultado.fecha}}
             {{resultado.apellido}}, {{resultado.nombre}}
             {{resultado.nombre_seccion}}
         </li>
     
     {% endfor %}
     </ul>
+
+{% else %}
+    <p>No se encontró ningun <b>Articulo</b> con ese nombre.</p>
+{% endif %}
+
 
 {% endblock %}
