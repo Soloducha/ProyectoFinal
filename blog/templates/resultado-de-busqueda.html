@@ -8,11 +8,13 @@
     <ul>
     {% for resultado in resultados %}
     
-        <li><b>{{resultado.titulo}}</b><br>
+        <li>
+            {{resultado.apellido}}, {{resultado.nombre}}
+            {% if resultado.titulo %}
+            <b>{{resultado.titulo}}</b><br>
             {{resultado.texto}}<br><br>
             <b>Fecha de Publicacion:</b> {{resultado.fecha}}
-            {{resultado.apellido}}, {{resultado.nombre}}
-            {{resultado.nombre_seccion}}
+            {% endif %}
         </li>
     
     {% endfor %}
